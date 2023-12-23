@@ -40,6 +40,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Dadata": {
+              "target": "Package",
+              "version": "[23.6.1, )"
+            },
             "System.Net.Http.Json": {
               "target": "Package",
               "version": "[8.0.0, )"

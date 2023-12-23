@@ -1,9 +1,9 @@
-﻿using System;
+﻿using INNBot.Classes.Configuration;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
-using Telegram.Bot.Types;
 
 namespace INNBot
 {
@@ -11,35 +11,30 @@ namespace INNBot
     {
         private static ITelegramBotClient bot;
 
-        private static string botKey;
-        private static string fnsKey;
-
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World! Set Telegram token");
+            Console.WriteLine("Set Telegram token");
+            ApiKeyManager.SetApiKey("TELEGRAM_BOT_KEY", Console.ReadLine());
 
-            botKey = Console.ReadLine();
-
-            Console.WriteLine("Hello World! Set FNS token");
-
-            fnsKey = Console.ReadLine();
+            Console.WriteLine("Set FNS token");
+            ApiKeyManager.SetApiKey("FNS_API_KEY", Console.ReadLine());
 
             try
             {
                 var cts = new CancellationTokenSource();
                 Console.CancelKeyPress += (e, a) => cts.Cancel();
 
-                bot = new TelegramBotClient(botKey);
+                bot = new TelegramBotClient(ApiKeyManager.GetApiKey("TELEGRAM_BOT_KEY"));
 
                 if (bot != null)
                 {
                     bot.StartReceiving(
                                 new MessageHandler(bot),
                                 new ReceiverOptions(), cancellationToken: cts.Token);
-                    
+
                     Console.WriteLine("Bot started. Press ^C to stop");
 
-                    await Task.Delay(-1, cancellationToken: cts.Token); 
+                    await Task.Delay(-1, cancellationToken: cts.Token);
                 }
             }
             catch (Exception)

@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Dadata/23.6.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Dadata.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Dadata.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/8.0.0": {
         "type": "package",
         "compile": {
@@ -140,6 +149,18 @@
     }
   },
   "libraries": {
+    "Dadata/23.6.1": {
+      "sha512": "0Y9Wda+smAtlfZb9AnhI4/3yo9QGLzTMyogbK6/HeI1TMVi3nOHpguWUZSg4l92wa9AMcb6WOV1FV767Qo1OHA==",
+      "type": "package",
+      "path": "dadata/23.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dadata.23.6.1.nupkg.sha512",
+        "dadata.nuspec",
+        "lib/netstandard2.0/Dadata.dll"
+      ]
+    },
     "Microsoft.Bcl.AsyncInterfaces/8.0.0": {
       "sha512": "3WA9q9yVqJp222P3x1wYIGDAkpjAku0TMUaaQV22g6L67AI0LdOIrVS7Ht2vJfLHGSPVuqN94vIr15qn+HEkHw==",
       "type": "package",
@@ -556,6 +577,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Dadata >= 23.6.1",
       "System.Net.Http.Json >= 8.0.0",
       "Telegram.Bot >= 19.0.0"
     ]
@@ -599,6 +621,10 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "Dadata": {
+            "target": "Package",
+            "version": "[23.6.1, )"
+          },
           "System.Net.Http.Json": {
             "target": "Package",
             "version": "[8.0.0, )"
